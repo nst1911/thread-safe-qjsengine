@@ -1,6 +1,6 @@
 # ThreadSafeQJSEngine
 
-`ThreadSafeQJSEngine' is a set of functions allowing to invoke `QJSEngine` and `QJSValue` objects methods in the engine's thread with blocking queued calls. 
+`ThreadSafeQJSEngine` is a set of functions allowing to invoke `QJSEngine` and `QJSValue` objects methods in the engine's thread with blocking queued calls. 
 
 # Why?
 
@@ -12,7 +12,7 @@ I've found a workaround to solve this problem at the [bugreport](https://bugrepo
 Example of using these functions is in `TestThread_Safe::run()` method (`testthread.h`).
 
 main.cpp provides three situations:
-1) Using `QJSEngine` as usual in its own thread (main thread): no crashes
-2) Using `QJSEngine` as usual in different thread: an unexpected crash. The example ¹2 shows the problem: if you operate with `QJSEngine` in the different thread (not the thread where an engine object was created), `SEGFAULT` will be thrown in some time.
-3) Using `ThreadSafeQJSEngine` functions to wrap `QJSEngine` method calls in blocking queue: no crashes 
+1) Using `QJSEngine` as usual in its own thread (main thread): no crashes.
+2) Using `QJSEngine` as usual in different thread (not the thread where an engine object was created): **an unexpected crash** (`SEGFAULT`) will be thrown in some time.
+3) Using `ThreadSafeQJSEngine` functions to wrap `QJSEngine` method calls in blocking queue: no crashes.
 
